@@ -158,7 +158,7 @@
         // console.log("user_auth: ", localStorage.getItem("user_auth"))
 
         if(userId) {
-          const apiUrl = `https://teletgramtest-bot.tecshield.net/api/user/${userId}`;
+          const apiUrl = `https://mahnoor62.github.io/test/api/user/login/${userId}`;
           fetch(apiUrl, {
             method: 'GET',
             headers: {
@@ -166,6 +166,7 @@
             },
           }).then(response => response.json())
             .then(data => {
+              console.log("data", data)
               unityInstance.SendMessage('JavascriptWrapper', 'ShowData', JSON.stringify(data));
             })
             .catch(error => {
