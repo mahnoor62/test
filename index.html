@@ -164,14 +164,14 @@
                 }).then(response => response.json())
                     .then(data => {
                         console.log("data", data)
-                        unityInstance.SendMessage('JavascriptWrapper', 'GetUserData', JSON.stringify(data));
+                        unityInstance.SendMessage('JavaScriptWrapper', 'GetUserData', JSON.stringify(data));
                     })
                     .catch(error => {
                         console.error('Error:', error);
-                        unityInstance.SendMessage('JavascriptWrapper', 'GetUserData', JSON.stringify({}));
+                        unityInstance.SendMessage('JavaScriptWrapper', 'GetUserData', JSON.stringify({}));
                     });
             } else {
-                unityInstance.SendMessage('JavascriptWrapper', 'GetUserData', JSON.stringify({}));
+                unityInstance.SendMessage('JavaScriptWrapper', 'GetUserData', JSON.stringify({}));
             }
 
         }).catch((message) => {
