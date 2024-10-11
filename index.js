@@ -3,6 +3,7 @@ window.addEventListener("load", function () {
       navigator.serviceWorker.register("ServiceWorker.js");
     }
   });
+
   var unityInstanceRef;
   var unsubscribe;
   var container = document.querySelector("#unity-container");
