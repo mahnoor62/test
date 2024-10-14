@@ -174,6 +174,14 @@
                 unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
             }
 
+            window.addEventListener('beforeunload', function (event) {
+                console.log("game going to close", event)
+                // Send a notification to the bot or backend to save progress
+                // notifyBotUserExitedGame();
+                // event.returnValue = ''; // Show confirmation dialog if needed (optional)
+            });
+
+
         }).catch((message) => {
             console.error(message)
         });
