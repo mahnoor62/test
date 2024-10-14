@@ -163,7 +163,6 @@
                     },
                 }).then(response => response.json())
                     .then(data => {
-                        console.log("data", data)
                         unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify(data));
                     })
                     .catch(error => {
@@ -173,28 +172,34 @@
             } else {
                 unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
             }
-            // if (window.Telegram && window.Telegram.WebApp) {
-            //     // Add an event listener for the "web_app_close" event
-            //     Telegram.WebApp.onEvent('web_app_close', function() {
-            //         console.log("Game closed through Telegram's close button");
-            //
-            //         // Notify the backend or bot that the game has been closed
-            //         // notifyBotUserExitedGame();
-            //     });
-            // }
+            //update user progress:
+            if (userId) {
+                unityInstance.updateProgress = async (data) => {
+                    console.log("data coming from game =>", data)
+                    const json = JSON.parse(data);
+                    console.log("json", json)
 
-            window.addEventListener('beforeunload', function (event) {
-                console.log("game going to close through unload", event)
-                // Send a notification to the bot or backend to save progress
-                // notifyBotUserExitedGame();
-                // event.returnValue = ''; // Show confirmation dialog if needed (optional)
-            });
-            window.addEventListener('visibilitychange', function (event) {
-                console.log("game going to close through visible", event)
-                // Send a notification to the bot or backend to save progress
-                // notifyBotUserExitedGame();
-                // event.returnValue = ''; // Show confirmation dialog if needed (optional)
-            });
+                    try {
+                        const apiUrl = `https://gravityglider.tecshield.net/api/user/login/${userId}`;
+                        // const bodyData = {}
+                        fetch(apiUrl, {
+                            method: 'POST',
+                            'Content-Type': 'application/json'
+                            // body: JSON.parse(bodyData),
+                        }).then(res => res.json()).then((data) => {
+                            console.log("user progress updated successfully", data)
+                        }).catch((err) => {
+                            console.log("err while implementing user progress api", err)
+                        })
+
+                    } catch (error) {
+                        console.log("error while updating user progress", error);
+                    }
+                };
+
+            } else {
+                console.log("user not found => update progress api call")
+            }
 
 
         }).catch((message) => {
