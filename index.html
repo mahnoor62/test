@@ -172,8 +172,8 @@
             } else {
                 unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
             }
-            //update user progress:
-            if (userId) {
+            // //update user progress:
+            // if (userId) {
                 unityInstance.updateProgress = async (data) => {
                     console.log("data coming from game =>", data)
                     const json = JSON.parse(data);
@@ -197,9 +197,9 @@
                     }
                 };
 
-            } else {
-                console.log("user not found => update progress api call")
-            }
+            // } else {
+            //     console.log("user not found => update progress api call")
+            // }
 
 
         }).catch((message) => {
