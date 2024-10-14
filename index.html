@@ -173,9 +173,24 @@
             } else {
                 unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
             }
+            // if (window.Telegram && window.Telegram.WebApp) {
+            //     // Add an event listener for the "web_app_close" event
+            //     Telegram.WebApp.onEvent('web_app_close', function() {
+            //         console.log("Game closed through Telegram's close button");
+            //
+            //         // Notify the backend or bot that the game has been closed
+            //         // notifyBotUserExitedGame();
+            //     });
+            // }
 
             window.addEventListener('beforeunload', function (event) {
-                console.log("game going to close", event)
+                console.log("game going to close through unload", event)
+                // Send a notification to the bot or backend to save progress
+                // notifyBotUserExitedGame();
+                // event.returnValue = ''; // Show confirmation dialog if needed (optional)
+            });
+            window.addEventListener('visibilitychange', function (event) {
+                console.log("game going to close through visible", event)
                 // Send a notification to the bot or backend to save progress
                 // notifyBotUserExitedGame();
                 // event.returnValue = ''; // Show confirmation dialog if needed (optional)
