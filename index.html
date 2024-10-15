@@ -146,8 +146,6 @@
             progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
 
-            gameInstance = unityInstance;
-
             loadingBar.style.display = "none";
             fullscreenButton.onclick = () => {
                 unityInstance.SetFullscreen(1);
@@ -180,7 +178,7 @@
             // //update user progress:
             // if (userId) {
 
-            gameInstance.updateProgress = async (data) => {
+            unityInstance.updateProgress = async (data) => {
 
                 console.log("data coming from game =>", data)
                 const json = JSON.parse(data);
@@ -203,6 +201,8 @@
                 //     console.log("error while updating user progress", error);
                 // }
             };
+
+            gameInstance = unityInstance;
 
 
             // } else {
