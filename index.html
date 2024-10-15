@@ -137,14 +137,14 @@
 
     const userId = extractUserIdFromUrl();
 
-    var gameInstance = unityInstance;
+
     var script = document.createElement("script");
     script.src = loaderUrl;
     script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
             progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
-
+            var gameInstance = unityInstance;
             loadingBar.style.display = "none";
             fullscreenButton.onclick = () => {
                 unityInstance.SetFullscreen(1);
@@ -174,7 +174,7 @@
                 unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
             }
 
-            window.gameInstance.updateProgress = async (data) => {
+            gameInstance.updateProgress = async (data) => {
 
                 console.log("data coming from game =>", data)
                 const json = JSON.parse(data);
