@@ -19,10 +19,10 @@
     <div id="unity-warning"></div>
     <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-        <div id="fullscreen-overlay">
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Gravity_Glider</div>
-    </div>
+        <div id="fullscreen-overlay" style="width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;">
+            <div id="unity-fullscreen-button"></div>
+            <div id="unity-build-title">Gravity_Glider</div>
+        </div>
     </div>
 </div>
 <script>
@@ -96,9 +96,10 @@
 
     } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.width = window.innerWidth * 0.9; // Set width to 90% of the screen width
+        canvas.height = window.innerHeight * 0.9;
+        // canvas.style.width = "960px";
+        // canvas.style.height = "600px";
     }
 
     loadingBar.style.display = "block";
@@ -180,50 +181,9 @@
             console.error(message)
         });
     };
-    // const updateProgress = async (data) => {
-    //     console.log("data",typeof data, data)
-    //     const json = JSON.parse(data);
-    //     console.log("json", json)
-    //
-    //     try {
-    //         const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
-    //         const bodyData = {
-    //             userId: json.userId,
-    //             score: json.score,
-    //             lives: json.lives,
-    //             level: json.level,
-    //             cryptoCoins: json.cryptoCoins,
-    //             rings: json.rings,
-    //             orangeGems: json.orangeGems,
-    //             greenGems: json.greenGems,
-    //             mushroom: json.mushroom,
-    //             blackPearl: json.blackPearl,
-    //             skull: json.skull,
-    //             stars: json.stars,
-    //             blueGems: json.blueGems,
-    //             isIntroSkipped: json.isIntroSkipped
-    //         }
-    //         console.log("bodyData",typeof bodyData , bodyData)
-    //         fetch(apiUrl, {
-    //             method: 'POST',
-    //             'Content-Type': 'application/json',
-    //             body: bodyData,
-    //         }).then(res => res.json()).then((data) => {
-    //             console.log("user progress updated successfully", data)
-    //         }).catch((err) => {
-    //             console.log("err while implementing user progress api", err)
-    //         })
-    //
-    //     } catch (error) {
-    //         console.log("error while updating user progress", error);
-    //     }
-    // }
 
     const updateProgress = async (data) => {
-        console.log("data", typeof data, data);
         const json = JSON.parse(data);
-        console.log("json", json);
-
         try {
             const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
             const bodyData = {
@@ -242,8 +202,6 @@
                 blueGems: json.blueGems,
                 isIntroSkipped: json.isIntroSkipped
             };
-            console.log("bodyData", typeof bodyData, bodyData);
-
             // Make sure to set headers and stringify the bodyData
             fetch(apiUrl, {
                 method: 'POST',
@@ -265,13 +223,6 @@
         }
     };
 
-    // //update user progress:
-    // if (userId) {
-
-
-    // } else {
-    //     console.log("user not found => update progress api call")
-    // }
 
     document.body.appendChild(script);
 
