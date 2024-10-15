@@ -189,26 +189,26 @@
         // }
         try {
             const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
-            const bodyData = {
-                userId: json.userId,
-                score: json.score,
-                lives: json.lives,
-                level: json.level,
-                cryptoCoins: json.cryptoCoins,
-                rings: json.rings,
-                orangeGems: json.orangeGems,
-                greenGems: json.greenGems,
-                mushroom: json.mushroom,
-                blackPearl: json.blackPearl,
-                skull: json.skull,
-                stars: json.stars,
-                blueGems: json.blueGems,
-                isIntroSkipped: json.isIntroSkipped
-            }
+            // const bodyData = {
+            //     userId: json.userId,
+            //     score: json.score,
+            //     lives: json.lives,
+            //     level: json.level,
+            //     cryptoCoins: json.cryptoCoins,
+            //     rings: json.rings,
+            //     orangeGems: json.orangeGems,
+            //     greenGems: json.greenGems,
+            //     mushroom: json.mushroom,
+            //     blackPearl: json.blackPearl,
+            //     skull: json.skull,
+            //     stars: json.stars,
+            //     blueGems: json.blueGems,
+            //     isIntroSkipped: json.isIntroSkipped
+            // }
             fetch(apiUrl, {
                 method: 'POST',
                 'Content-Type': 'application/json',
-                body: JSON.stringify(bodyData),
+                body: JSON.stringify(json),
             }).then(res => res.json()).then((data) => {
                 console.log("user progress updated successfully", data)
             }).catch((err) => {
