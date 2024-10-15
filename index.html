@@ -180,6 +180,30 @@
             // //update user progress:
             // if (userId) {
 
+            gameInstance.updateProgress = async (data) => {
+
+                console.log("data coming from game =>", data)
+                const json = JSON.parse(data);
+                console.log("json", json)
+
+                // try {
+                //     const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
+                //     // const bodyData = {}
+                //     fetch(apiUrl, {
+                //         method: 'POST',
+                //         'Content-Type': 'application/json'
+                //         // body: JSON.parse(bodyData),
+                //     }).then(res => res.json()).then((data) => {
+                //         console.log("user progress updated successfully", data)
+                //     }).catch((err) => {
+                //         console.log("err while implementing user progress api", err)
+                //     })
+                //
+                // } catch (error) {
+                //     console.log("error while updating user progress", error);
+                // }
+            };
+
 
             // } else {
             //     console.log("user not found => update progress api call")
@@ -191,29 +215,7 @@
         });
     };
 
-    gameInstance.updateProgress = async (data) => {
 
-        console.log("data coming from game =>", data)
-        const json = JSON.parse(data);
-        console.log("json", json)
-
-        // try {
-        //     const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
-        //     // const bodyData = {}
-        //     fetch(apiUrl, {
-        //         method: 'POST',
-        //         'Content-Type': 'application/json'
-        //         // body: JSON.parse(bodyData),
-        //     }).then(res => res.json()).then((data) => {
-        //         console.log("user progress updated successfully", data)
-        //     }).catch((err) => {
-        //         console.log("err while implementing user progress api", err)
-        //     })
-        //
-        // } catch (error) {
-        //     console.log("error while updating user progress", error);
-        // }
-    };
 
     document.body.appendChild(script);
 
