@@ -182,6 +182,9 @@
 
         const json = JSON.parse(data);
         console.log("json", json)
+        for(const key  in json){
+
+        }
         try {
             const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
             const bodyData = {
@@ -203,7 +206,7 @@
             fetch(apiUrl, {
                 method: 'POST',
                 'Content-Type': 'application/json',
-                body: JSON.parse(bodyData),
+                body: JSON.stringify(bodyData),
             }).then(res => res.json()).then((data) => {
                 console.log("user progress updated successfully", data)
             }).catch((err) => {
