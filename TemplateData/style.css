@@ -93,16 +93,14 @@ body {
 
 #fullscreen-overlay {
     position: fixed; /* Fixed position to cover the whole screen */
-    /*top: 0;*/
-    /*left: 0;*/
     width: 100%;
     height: 100%;
     display: flex; /* Use flexbox for centering */
     align-items: center; /* Vertically center */
     justify-content: center; /* Horizontally center */
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    /*z-index: 9998; !* Ensure it appears below the button *!*/
-    /*pointer-events: auto; !* Allow interactions *!*/
+    z-index: 9998; /* Ensure it appears below the button */
+    pointer-events: auto; /* Allow interactions */
 }
 
 /* Centered fullscreen button */
@@ -116,8 +114,9 @@ body {
 }
 
 /* Optional: Style for the build title to center it below the button */
-/*#unity-build-title {*/
-/*    color: white; !* Adjust text color *!*/
-/*    text-align: center; !* Center text *!*/
-/*    margin-top: 10px; !* Space between button and title *!*/
-/*}*/
+#unity-build-title {
+    color: white; /* Adjust text color */
+    text-align: center; /* Center text */
+    margin-top: 10px; /* Space between button and title */
+    z-index: 9999; /* Ensure title is above the overlay */
+}
