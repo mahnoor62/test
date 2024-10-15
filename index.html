@@ -180,10 +180,49 @@
             console.error(message)
         });
     };
+    // const updateProgress = async (data) => {
+    //     console.log("data",typeof data, data)
+    //     const json = JSON.parse(data);
+    //     console.log("json", json)
+    //
+    //     try {
+    //         const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
+    //         const bodyData = {
+    //             userId: json.userId,
+    //             score: json.score,
+    //             lives: json.lives,
+    //             level: json.level,
+    //             cryptoCoins: json.cryptoCoins,
+    //             rings: json.rings,
+    //             orangeGems: json.orangeGems,
+    //             greenGems: json.greenGems,
+    //             mushroom: json.mushroom,
+    //             blackPearl: json.blackPearl,
+    //             skull: json.skull,
+    //             stars: json.stars,
+    //             blueGems: json.blueGems,
+    //             isIntroSkipped: json.isIntroSkipped
+    //         }
+    //         console.log("bodyData",typeof bodyData , bodyData)
+    //         fetch(apiUrl, {
+    //             method: 'POST',
+    //             'Content-Type': 'application/json',
+    //             body: bodyData,
+    //         }).then(res => res.json()).then((data) => {
+    //             console.log("user progress updated successfully", data)
+    //         }).catch((err) => {
+    //             console.log("err while implementing user progress api", err)
+    //         })
+    //
+    //     } catch (error) {
+    //         console.log("error while updating user progress", error);
+    //     }
+    // }
+
     const updateProgress = async (data) => {
-        console.log("data",typeof data, data)
+        console.log("data", typeof data, data);
         const json = JSON.parse(data);
-        console.log("json", json)
+        console.log("json", json);
 
         try {
             const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
@@ -202,23 +241,29 @@
                 stars: json.stars,
                 blueGems: json.blueGems,
                 isIntroSkipped: json.isIntroSkipped
-            }
-            console.log("bodyData",typeof bodyData , bodyData)
+            };
+            console.log("bodyData", typeof bodyData, bodyData);
+
+            // Make sure to set headers and stringify the bodyData
             fetch(apiUrl, {
                 method: 'POST',
-                'Content-Type': 'application/json',
-                body: bodyData,
-            }).then(res => res.json()).then((data) => {
-                console.log("user progress updated successfully", data)
-            }).catch((err) => {
-                console.log("err while implementing user progress api", err)
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(bodyData), // Convert bodyData to JSON string
             })
+                .then(res => res.json())
+                .then((data) => {
+                    console.log("user progress updated successfully", data);
+                })
+                .catch((err) => {
+                    console.log("err while implementing user progress api", err);
+                });
 
         } catch (error) {
             console.log("error while updating user progress", error);
         }
-    }
-
+    };
 
     // //update user progress:
     // if (userId) {
