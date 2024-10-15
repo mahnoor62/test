@@ -106,6 +106,7 @@ body {
     background: url('fullscreen-button.png') no-repeat center;
     margin-bottom: 10px;
 }
+
 #unity-warning {
     position: absolute;
     left: 50%;
