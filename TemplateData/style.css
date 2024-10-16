@@ -92,6 +92,7 @@ body {
     background: rgba(0, 0, 0, 0.5); /* Optional: adds a semi-transparent background */
     z-index: 1000;
 }
+
 /* Center fullscreen button and content */
 #fullscreen-overlay {
     position: fixed;
@@ -109,8 +110,9 @@ body {
 /* Fullscreen button styling */
 #unity-fullscreen-button {
     cursor: pointer;
-    width: 50px; /* Optional: Adjust size */
-    height: 50px; /* Optional: Adjust size */
+    width: auto;
+    /*width: 50px; !* Optional: Adjust size *!*/
+    height: 40px; /* Optional: Adjust size */
     background: url('fullscreen-button.png') no-repeat center;
     background-size: contain; /* Ensure background image is sized correctly */
     z-index: 1001; /* Ensure it appears above other elements */
