@@ -115,10 +115,32 @@ body {
     text-align: center;
 }
 
+#unity-fullscreen-button {
+    cursor: pointer;
+    height: 38px;
+    background: url('fullscreen-button.png') no-repeat center;
+    margin-bottom: 10px;
+    display: block; /* Ensure the button is displayed */
+}
+
+/* Mobile-specific styling */
+.unity-mobile #unity-fullscreen-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: block; /* Make sure it's visible */
+}
+
+/* Adjust for mobile screens */
 @media (max-width: 768px) {
     #unity-fullscreen-button {
-        /*width: 50px;*/
-        /*height: 50px;*/
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px; /* Optional: Adjust size for touch */
+        height: 50px;
+        z-index: 1000;
         display: block;
     }
 }
