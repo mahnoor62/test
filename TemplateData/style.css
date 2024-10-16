@@ -126,8 +126,8 @@ body {
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     #unity-fullscreen-button {
-        width: 60px; /* Larger for touch */
-        height: 60px;
+        width: auto; /* Larger for touch */
+        height: 40px;
     }
 }
 
