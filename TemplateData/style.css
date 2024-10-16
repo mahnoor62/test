@@ -140,7 +140,8 @@ body {
         right: 20px;
         width: 50px; /* Optional: Adjust size for touch */
         height: 50px;
-        z-index: 1000;
+        z-index: 2000;
         display: block;
+        pointer-events: auto;
     }
 }
