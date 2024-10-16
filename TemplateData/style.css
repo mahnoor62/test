@@ -113,6 +113,7 @@ body {
     width: auto;
     /*width: 50px; !* Optional: Adjust size *!*/
     height: 40px; /* Optional: Adjust size */
+    margin-top: 20px;
     background: url('fullscreen-button.png') no-repeat center;
     background-size: contain; /* Ensure background image is sized correctly */
     z-index: 1001; /* Ensure it appears above other elements */
@@ -128,27 +129,7 @@ body {
     #unity-fullscreen-button {
         width: auto; /* Larger for touch */
         height: 40px;
+        margin-top: 20px;
     }
 }
 
-/*#unity-fullscreen-button {*/
-/*    cursor: pointer;*/
-/*    !*width: 38px;*!*/
-/*    height: 38px;*/
-/*    background: url('fullscreen-button.png') no-repeat center;*/
-/*    margin-bottom: 10px;*/
-/*}*/
-
-/*#unity-warning {*/
-/*    position: absolute;*/
-/*    left: 50%;*/
-/*    top: 5%;*/
-/*    transform: translate(-50%);*/
-/*    background: white;*/
-/*    padding: 10px;*/
-/*    display: none*/
-/*}*/
-
-/*.center-content {*/
-/*    text-align: center;*/
-/*}*/
