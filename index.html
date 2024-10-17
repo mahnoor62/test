@@ -21,8 +21,8 @@
         <div id="unity-webgl-logo"></div>
         <div id="fullscreen-overlay">
             <div class="center-content">
-                <div id="unity-fullscreen-button"></div>
-                <div id="unity-build-title">Gravity_Glider</div>
+                <div id="unity-fullscreen-button"  onclick="enterFullscreen()"></div>
+                <div id="unity-build-title">Click this button for full screen mode</div>
             </div>
         </div>
     </div>
@@ -223,6 +223,21 @@
         } catch (error) {
             console.log("error while updating user progress", error);
         }
+    };
+
+    function enterFullscreen() {
+        if (canvas.requestFullscreen) {
+            canvas.requestFullscreen();
+        } else if (canvas.mozRequestFullScreen) { // Firefox
+            canvas.mozRequestFullScreen();
+        } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            canvas.webkitRequestFullscreen();
+        } else if (canvas.msRequestFullscreen) { // IE/Edge
+            canvas.msRequestFullscreen();
+        }
+    }
+    fullscreenButton.onclick = () => {
+        enterFullscreen();
     };
 
 
