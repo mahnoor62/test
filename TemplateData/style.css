@@ -74,6 +74,7 @@ body {
 
 #unity-build-title {
     float: right;
+    color: white;
     margin-right: 10px;
     line-height: 38px;
     font-family: arial;

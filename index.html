@@ -154,6 +154,9 @@
                 unityInstance.SetFullscreen(1);
             };
 
+            fullscreenButton.onclick = () => {
+                unityInstance.SetFullscreen(1);
+            };
             //     }).catch((message) => {
             //         alert(message);
             //     });
@@ -225,21 +228,31 @@
         }
     };
 
+
     function enterFullscreen() {
-        console.log("fullscrren function calling")
+        console.log("Fullscreen function is being called");
         if (canvas.requestFullscreen) {
+            console.log("Using requestFullscreen");
             canvas.requestFullscreen();
         } else if (canvas.mozRequestFullScreen) { // Firefox
+            console.log("Using mozRequestFullScreen");
             canvas.mozRequestFullScreen();
         } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari and Opera
+            console.log("Using webkitRequestFullscreen");
             canvas.webkitRequestFullscreen();
         } else if (canvas.msRequestFullscreen) { // IE/Edge
+            console.log("Using msRequestFullscreen");
             canvas.msRequestFullscreen();
+        } else {
+            console.log("Fullscreen API not supported");
         }
     }
+
     fullscreenButton.onclick = () => {
         enterFullscreen();
     };
+
+
 
 
     document.body.appendChild(script);
