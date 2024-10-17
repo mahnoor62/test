@@ -226,6 +226,7 @@
     };
 
     function enterFullscreen() {
+        console.log("fullscrren function calling")
         if (canvas.requestFullscreen) {
             canvas.requestFullscreen();
         } else if (canvas.mozRequestFullScreen) { // Firefox
