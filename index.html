@@ -107,26 +107,47 @@
     loadingBar.style.display = "block";
 
     function enterFullscreen() {
-        console.log("fullscreen button calling function=>")
+        console.log("full screen button calling::::::")
         if (canvas.requestFullscreen) {
-            canvas.requestFullscreen();
+            canvas.requestFullscreen().catch(err => {
+                // Fallback to manually resizing if fullscreen request fails
+                maximizeCanvas();
+            });
         } else if (canvas.webkitRequestFullscreen) {
-            canvas.webkitRequestFullscreen();
+            canvas.webkitRequestFullscreen().catch(err => {
+                maximizeCanvas();
+            });
         } else if (canvas.mozRequestFullScreen) {
-            canvas.mozRequestFullScreen();
+            canvas.mozRequestFullScreen().catch(err => {
+                maximizeCanvas();
+            });
         } else if (canvas.msRequestFullscreen) {
-            canvas.msRequestFullscreen();
+            canvas.msRequestFullscreen().catch(err => {
+                maximizeCanvas();
+            });
         } else {
-            console.log("Fullscreen API is not supported on this device.");
+            maximizeCanvas(); // Fallback for unsupported environments
+            console.log("button not enabled yet");
         }
     }
 
-    // Add event listener for the fullscreen button
-    fullscreenButton.addEventListener("click", enterFullscreen);
+    function maximizeCanvas() {
+        // Manually adjust the canvas size to simulate fullscreen
+        canvas.style.width = "100vw";
+        canvas.style.height = "100vh";
+        canvas.style.position = "fixed";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+    }
 
     if (!document.fullscreenEnabled) {
-        alert("Fullscreen is not supported in this browser. Please open in a different browser.");
+        alert("Fullscreen is not supported in the Telegram browser. Please open this game in your default browser for fullscreen mode.");
     }
+
+    // Add event listener for the fullscreen button
+    fullscreenButton.addEventListener("click", () => {
+        enterFullscreen();
+    });
 
     //get user id when play into telegram
     function extractUserIdFromUrl() {
