@@ -21,8 +21,7 @@
         <div id="unity-webgl-logo"></div>
         <div id="fullscreen-overlay">
             <div class="center-content">
-                <input type="button" value="Click to Toggle Fullscreen" id="fullscreen-button">
-                <!--                <div id="unity-fullscreen-button"></div>-->
+                <div id="unity-fullscreen-button"></div>
                 <div id="unity-build-title">Click this button for full screen mode</div>
             </div>
         </div>
@@ -34,7 +33,7 @@
     var canvas = document.querySelector("#unity-canvas");
     var loadingBar = document.querySelector("#unity-loading-bar");
     var progressBarFull = document.querySelector("#unity-progress-bar-full");
-    var fullscreenButton = document.querySelector("#fullscreen-button");
+    var fullscreenButton = document.querySelector("#unity-fullscreen-button");
     var warningBanner = document.querySelector("#unity-warning");
 
     // Shows a temporary message banner/ribbon for a few seconds, or
@@ -148,29 +147,8 @@
             progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
             loadingBar.style.display = "none";
-            // fullscreenButton.onclick = () => {
-            //     unityInstance.SetFullscreen(1);
-            // };
-            fullscreenButton.onclick = function () {
-                console.log("button click*******")
-                if ((document.fullScreenElement && document.fullScreenElement !== null) ||
-                    (!document.mozFullScreen && !document.webkitIsFullScreen)) {
-                    if (document.documentElement.requestFullScreen) {
-                        document.documentElement.requestFullScreen();
-                    } else if (document.documentElement.mozRequestFullScreen) {
-                        document.documentElement.mozRequestFullScreen();
-                    } else if (document.documentElement.webkitRequestFullScreen) {
-                        document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-                    }
-                } else {
-                    if (document.cancelFullScreen) {
-                        document.cancelFullScreen();
-                    } else if (document.mozCancelFullScreen) {
-                        document.mozCancelFullScreen();
-                    } else if (document.webkitCancelFullScreen) {
-                        document.webkitCancelFullScreen();
-                    }
-                }
+            fullscreenButton.onclick = () => {
+                unityInstance.SetFullscreen(1);
             };
 
             //     }).catch((message) => {
@@ -243,17 +221,6 @@
             console.log("error while updating user progress", error);
         }
     };
-
-    // function enterFullscreen() {
-    //     console.log("button calling-------------")
-    //     window.addEventListener('DOMContentLoaded', () => {
-    //         console.log("Telegram", Telegram)
-    //         // Expand the Telegram web app to occupy the full height
-    //         if (Telegram.WebApp) {
-    //             Telegram.WebApp.expand();
-    //         }
-    //     });
-    // }
 
     document.body.appendChild(script);
 </script>
