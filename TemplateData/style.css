@@ -109,7 +109,7 @@ body {
 }
 
 /* Fullscreen button styling */
-#unity-fullscreen-button {
+#fullscreen-button {
     cursor: pointer;
     width: auto;
     /*width: 50px; !* Optional: Adjust size *!*/
@@ -127,7 +127,7 @@ body {
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
-    #unity-fullscreen-button {
+    #fullscreen-button {
         cursor: pointer;
         width: auto; /* Larger for touch */
         height: 40px;

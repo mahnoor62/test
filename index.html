@@ -21,7 +21,7 @@
         <div id="unity-webgl-logo"></div>
         <div id="fullscreen-overlay">
             <div class="center-content">
-                <div id="unity-fullscreen-button"  onclick="enterFullscreen()"></div>
+                <div id="fullscreen-button" onclick="enterFullscreen()"></div>
                 <div id="unity-build-title">Click this button for full screen mode</div>
             </div>
         </div>
@@ -33,7 +33,7 @@
     var canvas = document.querySelector("#unity-canvas");
     var loadingBar = document.querySelector("#unity-loading-bar");
     var progressBarFull = document.querySelector("#unity-progress-bar-full");
-    var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+    var fullscreenButton = document.querySelector("#fullscreen-button");
     var warningBanner = document.querySelector("#unity-warning");
 
     // Shows a temporary message banner/ribbon for a few seconds, or
@@ -106,6 +106,19 @@
 
     loadingBar.style.display = "block";
 
+    function enterFullscreen() {
+        console.log("fullscreen button calling function=>")
+        if (canvas.requestFullscreen) {
+            canvas.requestFullscreen();
+        } else if (canvas.webkitRequestFullscreen) {
+            canvas.webkitRequestFullscreen();
+        } else if (canvas.mozRequestFullScreen) {
+            canvas.mozRequestFullScreen();
+        } else if (canvas.msRequestFullscreen) {
+            canvas.msRequestFullscreen();
+        }
+    }
+
     //get user id when play into telegram
     function extractUserIdFromUrl() {
         // Get the URL hash part (everything after #)
@@ -154,9 +167,6 @@
                 unityInstance.SetFullscreen(1);
             };
 
-            fullscreenButton.onclick = () => {
-                unityInstance.SetFullscreen(1);
-            };
             //     }).catch((message) => {
             //         alert(message);
             //     });
@@ -229,34 +239,7 @@
     };
 
 
-    function enterFullscreen() {
-        console.log("Fullscreen function is being called");
-        if (canvas.requestFullscreen) {
-            console.log("Using requestFullscreen");
-            canvas.requestFullscreen();
-        } else if (canvas.mozRequestFullScreen) { // Firefox
-            console.log("Using mozRequestFullScreen");
-            canvas.mozRequestFullScreen();
-        } else if (canvas.webkitRequestFullscreen) { // Chrome, Safari and Opera
-            console.log("Using webkitRequestFullscreen");
-            canvas.webkitRequestFullscreen();
-        } else if (canvas.msRequestFullscreen) { // IE/Edge
-            console.log("Using msRequestFullscreen");
-            canvas.msRequestFullscreen();
-        } else {
-            console.log("Fullscreen API not supported");
-        }
-    }
-
-    fullscreenButton.onclick = () => {
-        enterFullscreen();
-    };
-
-
-
-
     document.body.appendChild(script);
-
 </script>
 </body>
 </html>
