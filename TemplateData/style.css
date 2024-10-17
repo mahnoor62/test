@@ -128,10 +128,11 @@ body {
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     #unity-fullscreen-button {
-        cursor: pointer;
-        width: auto; /* Larger for touch */
-        height: 40px;
-        margin-top: 20px;
+        /*cursor: pointer;*/
+        /*width: auto; !* Larger for touch *!*/
+        /*height: 40px;*/
+        /*margin-top: 20px;*/
+        display: none;
     }
 }
 
