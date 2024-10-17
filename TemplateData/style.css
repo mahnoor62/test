@@ -117,6 +117,7 @@ body {
     background: url('fullscreen-button.png') no-repeat center;
     background-size: contain; /* Ensure background image is sized correctly */
     z-index: 1001; /* Ensure it appears above other elements */
+    touch-action: manipulation;
 }
 
 /* Centering content */
@@ -124,13 +125,28 @@ body {
     text-align: center;
 }
 
+/*!* Mobile-specific styles *!*/
+/*@media (max-width: 768px) {*/
+/*    #unity-fullscreen-button {*/
+/*        cursor: pointer;*/
+/*        width: auto; !* Larger for touch *!*/
+/*        height: 40px;*/
+/*        margin-top: 20px;*/
+/*    }*/
+/*}*/
 /* Mobile-specific styles */
 @media (max-width: 768px) {
     #unity-fullscreen-button {
-        cursor: pointer;
-        width: auto; /* Larger for touch */
-        height: 40px;
+        width: 80px; /* Larger for better touch accessibility */
+        height: 80px;
         margin-top: 20px;
     }
 }
 
+/* Ensure button remains functional at different zoom levels */
+@media (pointer: coarse) {
+    #unity-fullscreen-button {
+        width: 80px; /* Extra touch area for mobile users */
+        height: 80px;
+    }
+}
