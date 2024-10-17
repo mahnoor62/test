@@ -21,7 +21,7 @@
         <div id="unity-webgl-logo"></div>
         <div id="fullscreen-overlay">
             <div class="center-content">
-                <div id="unity-fullscreen-button" onclick="enterFullscreen()"></div>
+                <div id="unity-fullscreen-button"></div>
                 <div id="unity-build-title">Click this button for full screen mode</div>
             </div>
         </div>
@@ -97,36 +97,11 @@
 
 
     } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-        // canvas.width = window.innerWidth * 0.9; // Set width to 90% of the screen width
-        // canvas.height = window.innerHeight * 0.9;
         canvas.style.width = "960px";
         canvas.style.height = "600px";
     }
 
     loadingBar.style.display = "block";
-
-    // function enterFullscreen() {
-    //     console.log("fullscreen button calling function=>")
-    //     if (canvas.requestFullscreen) {
-    //         canvas.requestFullscreen();
-    //     } else if (canvas.webkitRequestFullscreen) {
-    //         canvas.webkitRequestFullscreen();
-    //     } else if (canvas.mozRequestFullScreen) {
-    //         canvas.mozRequestFullScreen();
-    //     } else if (canvas.msRequestFullscreen) {
-    //         canvas.msRequestFullscreen();
-    //     } else {
-    //         console.log("Fullscreen API is not supported on this device.");
-    //     }
-    // }
-    //
-    // // Add event listener for the fullscreen button
-    // fullscreenButton.addEventListener("click", enterFullscreen);
-    //
-    // if (!document.fullscreenEnabled) {
-    //     alert("Fullscreen is not supported in this browser. Please open in a different browser.");
-    // }
 
     //get user id when play into telegram
     function extractUserIdFromUrl() {
@@ -172,10 +147,16 @@
             progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
             loadingBar.style.display = "none";
-            // fullscreenButton.onclick = () => {
-            //     // unityInstance.SetFullscreen(1);
-            // };
-
+            fullscreenButton.onclick = () => {
+                unityInstance.SetFullscreen(1);
+            };
+            fullscreenButton.onclick = () => {
+                if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                    unityInstance.SetFullscreen(1);
+                } else {
+                    console.log("Fullscreen not supported on mobile devices.");
+                }
+            };
             //     }).catch((message) => {
             //         alert(message);
             //     });
@@ -247,16 +228,16 @@
         }
     };
 
-    function enterFullscreen() {
-        console.log("button calling-------------")
-        window.addEventListener('DOMContentLoaded', () => {
-            console.log("Telegram", Telegram)
-            // Expand the Telegram web app to occupy the full height
-            if (Telegram.WebApp) {
-                Telegram.WebApp.expand();
-            }
-        });
-    }
+    // function enterFullscreen() {
+    //     console.log("button calling-------------")
+    //     window.addEventListener('DOMContentLoaded', () => {
+    //         console.log("Telegram", Telegram)
+    //         // Expand the Telegram web app to occupy the full height
+    //         if (Telegram.WebApp) {
+    //             Telegram.WebApp.expand();
+    //         }
+    //     });
+    // }
 
     document.body.appendChild(script);
 </script>
