@@ -19,16 +19,13 @@
     <div id="unity-warning"></div>
     <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-        <div id="fullscreen-overlay">
-            <div class="center-content">
+<!--        <div id="fullscreen-overlay">-->
+<!--            <div class="center-content">-->
                 <div id="unity-fullscreen-button"></div>
                 <div id="unity-build-title">Click this button for full screen mode</div>
             </div>
-            <div id="orientation-button-container">
-                <button id="orientation-button">Switch to Portrait</button>
-            </div>
-        </div>
-    </div>
+<!--        </div>-->
+<!--    </div>-->
 </div>
 <script>
 
@@ -38,7 +35,6 @@
     var progressBarFull = document.querySelector("#unity-progress-bar-full");
     var fullscreenButton = document.querySelector("#unity-fullscreen-button");
     var warningBanner = document.querySelector("#unity-warning");
-    const orientationButton = document.getElementById("orientation-button");
     // Shows a temporary message banner/ribbon for a few seconds, or
     // a permanent error message on top of the canvas if type=='error'.
     // If type=='warning', a yellow highlight color is used.
@@ -224,29 +220,6 @@
             console.log("error while updating user progress", error);
         }
     };
-    let isPortrait = false;
-
-    orientationButton.addEventListener("click", () => {
-        isPortrait = !isPortrait;
-        if (isPortrait) {
-            // Switch to portrait mode
-            container.style.width = "100vh";
-            container.style.height = "100vw";
-            container.style.transform = "rotate(90deg)";
-            container.style.transformOrigin = "top left";
-            canvas.style.width = "100vh";
-            canvas.style.height = "100vw";
-            orientationButton.textContent = "Switch to Landscape";
-        } else {
-            // Switch back to landscape mode
-            container.style.width = "100vw";
-            container.style.height = "100vh";
-            container.style.transform = "rotate(0deg)";
-            canvas.style.width = "100vw";
-            canvas.style.height = "100vh";
-            orientationButton.textContent = "Switch to Portrait";
-        }
-    });
     document.body.appendChild(script);
 </script>
 </body>
