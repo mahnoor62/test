@@ -19,13 +19,13 @@
     <div id="unity-warning"></div>
     <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-<!--        <div id="fullscreen-overlay">-->
-<!--            <div class="center-content">-->
-                <div id="unity-fullscreen-button"></div>
-                <div id="unity-build-title">Click this button for full screen mode</div>
-            </div>
-<!--        </div>-->
-<!--    </div>-->
+        <!--        <div id="fullscreen-overlay">-->
+        <!--            <div class="center-content">-->
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Gravity glider</div>
+    </div>
+    <!--        </div>-->
+    <!--    </div>-->
 </div>
 <script>
 
@@ -110,8 +110,12 @@
         // Create a URLSearchParams object to easily parse the parameters
         const params = new URLSearchParams(hash);
 
+        console.log("params: ", params)
+
         // Decode the tgWebAppData parameter
         const tgWebAppData = params.get('tgWebAppData');
+
+        console.log("tgWebAppData: ", tgWebAppData)
 
         if (tgWebAppData) {
             // Parse the tgWebAppData string into parameters
