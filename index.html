@@ -110,12 +110,8 @@
         // Create a URLSearchParams object to easily parse the parameters
         const params = new URLSearchParams(hash);
 
-        console.log("params: ", params)
-
         // Decode the tgWebAppData parameter
         const tgWebAppData = params.get('tgWebAppData');
-
-        console.log("tgWebAppData: ", tgWebAppData)
 
         if (tgWebAppData) {
             // Parse the tgWebAppData string into parameters
@@ -134,6 +130,9 @@
                 // Extract the id from the user object
                 return userData.id;
             }
+        } else {
+            const id = params.get('id');
+            if (id) return id;
         }
 
         // Return null if the id was not found
@@ -141,7 +140,6 @@
     }
 
     const userId = extractUserIdFromUrl();
-
 
     var script = document.createElement("script");
     script.src = loaderUrl;
