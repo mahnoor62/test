@@ -182,6 +182,7 @@
                         console.error('Error:', error);
                         unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
                     });
+                document.getElementById("fullscreen-link").href = `https://mahnoor62.github.io/test/#id=${userId}`;
             } else {
                 unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
             }
