@@ -19,13 +19,13 @@
     <div id="unity-warning"></div>
     <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-        <!--        <div id="fullscreen-overlay">-->
-        <!--            <div class="center-content">-->
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Gravity glider</div>
+        <div id="fullscreen-overlay" style="display:none;">
+            <a id="fullscreen-link" href="#" target="_blank">
+                <div id="unity-fullscreen-button"></div>
+                <div id="unity-build-title">Gravity glider</div>
+            </a>
+        </div>
     </div>
-    <!--        </div>-->
-    <!--    </div>-->
 </div>
 <script>
 
@@ -79,7 +79,7 @@
     // happening inside the engine, and you would instead like to size up
     // the canvas DOM size and WebGL render target sizes yourself.
     // config.matchWebGLToCanvasSize = false;
-
+    //it will check where the user play game on mobile phn or desktop if on desktop it show the external link
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
 
@@ -98,6 +98,14 @@
     } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
+
+        // Set the href attribute of the fullscreen link
+        fullscreenLink.href = `https://mahnoor62.github.io/test/#id=${userId}`;
+
+        // Show the fullscreen overlay on click
+        document.addEventListener("click", function () {
+            fullscreenOverlay.style.display = "block";
+        });
     }
 
     loadingBar.style.display = "block";
@@ -158,7 +166,7 @@
             // };
 
             if (userId) {
-                unityInstance.SendMessage('JavascriptHandler', 'GetWebGLExternalLink', `https://mahnoor62.github.io/test/#id=${userId}`);
+                // unityInstance.SendMessage('JavascriptHandler', 'GetWebGLExternalLink', `https://mahnoor62.github.io/test/#id=${userId}`);
 
                 const apiUrl = `https://gravityglider.tecshield.net/api/user/login/${userId}`;
                 fetch(apiUrl, {
