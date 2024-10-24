@@ -99,142 +99,142 @@
         canvas.style.width = "960px";
         canvas.style.height = "600px";
 
-        // Set the href attribute of the fullscreen link
-    //     fullscreenLink.href = `https://mahnoor62.github.io/test/#id=${userId}`;
-    //
-    //     // Show the fullscreen overlay on click
-    //     document.addEventListener("click", function () {
-    //         fullscreenOverlay.style.display = "block";
-    //     });
-    // }
+        // Reference the fullscreen link correctly
+        const fullscreenLinkElement = document.getElementById("fullscreen-link");
+        fullscreenLinkElement.href = `https://mahnoor62.github.io/test/#id=${userId}`;
 
-    loadingBar.style.display = "block";
-
-    //get user id when play into telegram
-    function extractUserIdFromUrl() {
-        // Get the URL hash part (everything after #)
-        const hash = window.location.hash.substring(1);
-
-        // Create a URLSearchParams object to easily parse the parameters
-        const params = new URLSearchParams(hash);
-
-        // Decode the tgWebAppData parameter
-        const tgWebAppData = params.get('tgWebAppData');
-
-        if (tgWebAppData) {
-            // Parse the tgWebAppData string into parameters
-            const dataParams = new URLSearchParams(tgWebAppData);
-
-            // Get the user JSON string from the "user" parameter
-            const userJson = dataParams.get('user');
-
-            if (userJson) {
-                // Decode the user JSON string
-                const decodedUserJson = decodeURIComponent(userJson);
-
-                // Parse the JSON string into an object
-                const userData = JSON.parse(decodedUserJson);
-
-                // Extract the id from the user object
-                return userData.id;
-            }
-        } else {
-            const id = params.get('id');
-            if (id) return id;
-        }
-
-        // Return null if the id was not found
-        return null;
-    }
-
-    const userId = extractUserIdFromUrl();
-
-    var script = document.createElement("script");
-    script.src = loaderUrl;
-    script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
-            progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
-            loadingBar.style.display = "none";
-            fullscreenButton.onclick = () => {
-                unityInstance.SetFullscreen(1);
-            };
-
-            //     }).catch((message) => {
-            //         alert(message);
-            //     });
-            // };
-
-            if (userId) {
-                // unityInstance.SendMessage('JavascriptHandler', 'GetWebGLExternalLink', `https://mahnoor62.github.io/test/#id=${userId}`);
-
-                const apiUrl = `https://gravityglider.tecshield.net/api/user/login/${userId}`;
-                fetch(apiUrl, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                }).then(response => response.json())
-                    .then(data => {
-                        unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify(data));
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
-                    });
-                // document.getElementById("fullscreen-link").href = `https://mahnoor62.github.io/test/#id=${userId}`;
-            } else {
-                unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
-            }
-
-
-        }).catch((message) => {
-            console.error(message)
+        // Show the fullscreen overlay on click
+        document.addEventListener("click", function () {
+            document.getElementById("fullscreen-overlay").style.display = "block";
         });
-    };
 
-    const updateProgress = async (data) => {
-        const json = JSON.parse(data);
-        try {
-            const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
-            const bodyData = {
-                userId: json.userId,
-                score: json.score,
-                lives: json.lives,
-                level: json.level,
-                cryptoCoins: json.cryptoCoins,
-                rings: json.rings,
-                orangeGems: json.orangeGems,
-                greenGems: json.greenGems,
-                mushroom: json.mushroom,
-                blackPearl: json.blackPearl,
-                skull: json.skull,
-                stars: json.stars,
-                blueGems: json.blueGems,
-                isIntroSkipped: json.isIntroSkipped,
-                rewardDate: json.rewardDate,
-            };
-            // Make sure to set headers and stringify the bodyData
-            fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(bodyData), // Convert bodyData to JSON string
-            })
-                .then(res => res.json())
-                .then((data) => {
-                    console.log("user progress updated successfully", data);
-                })
-                .catch((err) => {
-                    console.log("err while implementing user progress api", err);
-                });
+        loadingBar.style.display = "block";
 
-        } catch (error) {
-            console.log("error while updating user progress", error);
+        //get user id when play into telegram
+        function extractUserIdFromUrl() {
+            // Get the URL hash part (everything after #)
+            const hash = window.location.hash.substring(1);
+
+            // Create a URLSearchParams object to easily parse the parameters
+            const params = new URLSearchParams(hash);
+
+            // Decode the tgWebAppData parameter
+            const tgWebAppData = params.get('tgWebAppData');
+
+            if (tgWebAppData) {
+                // Parse the tgWebAppData string into parameters
+                const dataParams = new URLSearchParams(tgWebAppData);
+
+                // Get the user JSON string from the "user" parameter
+                const userJson = dataParams.get('user');
+
+                if (userJson) {
+                    // Decode the user JSON string
+                    const decodedUserJson = decodeURIComponent(userJson);
+
+                    // Parse the JSON string into an object
+                    const userData = JSON.parse(decodedUserJson);
+
+                    // Extract the id from the user object
+                    return userData.id;
+                }
+            } else {
+                const id = params.get('id');
+                if (id) return id;
+            }
+
+            // Return null if the id was not found
+            return null;
         }
-    };
-    document.body.appendChild(script);
+
+        const userId = extractUserIdFromUrl();
+
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+            createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+            }).then((unityInstance) => {
+                loadingBar.style.display = "none";
+                fullscreenButton.onclick = () => {
+                    unityInstance.SetFullscreen(1);
+                };
+
+                //     }).catch((message) => {
+                //         alert(message);
+                //     });
+                // };
+
+                if (userId) {
+                    // unityInstance.SendMessage('JavascriptHandler', 'GetWebGLExternalLink', `https://mahnoor62.github.io/test/#id=${userId}`);
+
+                    const apiUrl = `https://gravityglider.tecshield.net/api/user/login/${userId}`;
+                    fetch(apiUrl, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }).then(response => response.json())
+                        .then(data => {
+                            unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify(data));
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
+                        });
+                    // document.getElementById("fullscreen-link").href = `https://mahnoor62.github.io/test/#id=${userId}`;
+                } else {
+                    unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
+                }
+
+
+            }).catch((message) => {
+                console.error(message)
+            });
+        };
+
+        const updateProgress = async (data) => {
+            const json = JSON.parse(data);
+            try {
+                const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
+                const bodyData = {
+                    userId: json.userId,
+                    score: json.score,
+                    lives: json.lives,
+                    level: json.level,
+                    cryptoCoins: json.cryptoCoins,
+                    rings: json.rings,
+                    orangeGems: json.orangeGems,
+                    greenGems: json.greenGems,
+                    mushroom: json.mushroom,
+                    blackPearl: json.blackPearl,
+                    skull: json.skull,
+                    stars: json.stars,
+                    blueGems: json.blueGems,
+                    isIntroSkipped: json.isIntroSkipped,
+                    rewardDate: json.rewardDate,
+                };
+                // Make sure to set headers and stringify the bodyData
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(bodyData), // Convert bodyData to JSON string
+                })
+                    .then(res => res.json())
+                    .then((data) => {
+                        console.log("user progress updated successfully", data);
+                    })
+                    .catch((err) => {
+                        console.log("err while implementing user progress api", err);
+                    });
+
+            } catch (error) {
+                console.log("error while updating user progress", error);
+            }
+        };
+        document.body.appendChild(script);
 </script>
 </body>
 </html>
