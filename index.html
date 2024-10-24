@@ -158,8 +158,7 @@
             // };
 
             if (userId) {
-
-                // unityInstance.SendMessage('JavascriptHandler', 'GetWebGLExternalLink', `https://mahnoor62.github.io/test/#id=${userId}`);
+                unityInstance.SendMessage('JavascriptHandler', 'GetWebGLExternalLink', `https://mahnoor62.github.io/test/#id=${userId}`);
 
                 const apiUrl = `https://gravityglider.tecshield.net/api/user/login/${userId}`;
                 fetch(apiUrl, {
@@ -203,7 +202,8 @@
                 skull: json.skull,
                 stars: json.stars,
                 blueGems: json.blueGems,
-                isIntroSkipped: json.isIntroSkipped
+                isIntroSkipped: json.isIntroSkipped,
+                rewardDate: json.rewardDate,
             };
             // Make sure to set headers and stringify the bodyData
             fetch(apiUrl, {
