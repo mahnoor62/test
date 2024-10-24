@@ -100,13 +100,13 @@
         canvas.style.height = "600px";
 
         // Set the href attribute of the fullscreen link
-        fullscreenLink.href = `https://mahnoor62.github.io/test/#id=${userId}`;
-
-        // Show the fullscreen overlay on click
-        document.addEventListener("click", function () {
-            fullscreenOverlay.style.display = "block";
-        });
-    }
+    //     fullscreenLink.href = `https://mahnoor62.github.io/test/#id=${userId}`;
+    //
+    //     // Show the fullscreen overlay on click
+    //     document.addEventListener("click", function () {
+    //         fullscreenOverlay.style.display = "block";
+    //     });
+    // }
 
     loadingBar.style.display = "block";
 
@@ -182,7 +182,7 @@
                         console.error('Error:', error);
                         unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
                     });
-                document.getElementById("fullscreen-link").href = `https://mahnoor62.github.io/test/#id=${userId}`;
+                // document.getElementById("fullscreen-link").href = `https://mahnoor62.github.io/test/#id=${userId}`;
             } else {
                 unityInstance.SendMessage('JavascriptHandler', 'GetUserData', JSON.stringify({}));
             }
