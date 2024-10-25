@@ -111,34 +111,36 @@
         // Create a URLSearchParams object to easily parse the parameters
         const params = new URLSearchParams(hash);
 
-        // Decode the tgWebAppData parameter
-        const tgWebAppData = params.get('tgWebAppData');
+        const id = params.get('id');
+        if (id) return id;
 
-        if (tgWebAppData) {
-            // Parse the tgWebAppData string into parameters
-            const dataParams = new URLSearchParams(tgWebAppData);
-
-            // Get the user JSON string from the "user" parameter
-            const userJson = dataParams.get('user');
-
-            const id = params.get('id');
-
-            console.log("id: ", id);
-
-            if (userJson) {
-                // Decode the user JSON string
-                const decodedUserJson = decodeURIComponent(userJson);
-
-                // Parse the JSON string into an object
-                const userData = JSON.parse(decodedUserJson);
-
-                // Extract the id from the user object
-                return userData.id;
-            }
-        } else {
-            const id = params.get('id');
-            if (id) return id;
-        }
+        // // Decode the tgWebAppData parameter
+        // const tgWebAppData = params.get('tgWebAppData');
+        //
+        // if (tgWebAppData) {
+        //     // Parse the tgWebAppData string into parameters
+        //     const dataParams = new URLSearchParams(tgWebAppData);
+        //
+        //     // Get the user JSON string from the "user" parameter
+        //     const userJson = dataParams.get('user');
+        //
+        //     const id = params.get('id');
+        //
+        //     console.log("id: ", id);
+        //
+        //     if (userJson) {
+        //         // Decode the user JSON string
+        //         const decodedUserJson = decodeURIComponent(userJson);
+        //
+        //         // Parse the JSON string into an object
+        //         const userData = JSON.parse(decodedUserJson);
+        //
+        //         // Extract the id from the user object
+        //         return userData.id;
+        //     }
+        // } else {
+        //
+        // }
 
         // Return null if the id was not found
         return null;
