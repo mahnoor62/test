@@ -99,8 +99,11 @@
 
 
     } else {
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        // canvas.style.width = "960px";
+        // canvas.style.height = "600px";
+
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
 
         const hash = window.location.hash.substring(1);
         const params = new URLSearchParams(hash);
@@ -204,10 +207,7 @@
     const externalUrlFun = () => {
         if (userId) {
             const url = `https://mahnoor62.github.io/test/#id=${userId}`;
-            const newWindow = window.open(url, '_blank');
-            if (newWindow) {
-                document.getElementById('fullscreen-overlay').style.display = 'none';
-            }
+            window.open(url, '_blank');
         }
     };
     const updateProgress = async (data) => {
