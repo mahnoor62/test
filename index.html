@@ -20,7 +20,7 @@
     <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="fullscreen-overlay" style="display:none;">
-            <button id="link" onclick="externalUrlFun()">click here</button>
+            <button id="link" onclick="externalUrlFun()">Play game in browser</button>
         </div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">Gravity glider</div>
@@ -99,8 +99,6 @@
         canvas.style.width = "960px";
         canvas.style.height = "600px";
         document.getElementById('fullscreen-overlay').style.display = 'block';
-
-
     }
 
     loadingBar.style.display = "block";
@@ -143,7 +141,9 @@
     }
 
     const userId = extractUserIdFromUrl();
+
     console.log("userId", userId)
+
     var script = document.createElement("script");
     script.src = loaderUrl;
     script.onload = () => {
@@ -186,16 +186,11 @@
             console.error(message)
         });
     };
-    // const externalUrlFun = () => {
-    //     const url = `https://mahnoor62.github.io/test/#id=${userId}`;
-    //     console.log("url", url)
-    //     window.location.href = url;
-    // }
+
     const externalUrlFun = () => {
         if (userId) {
             const url = `https://mahnoor62.github.io/test/#id=${userId}`;
-            console.log("Redirecting to URL:", url);
-            // window.location.href = url;
+            // console.log("Redirecting to URL:", url);
             window.open(url, '_blank');
             document.getElementById('fullscreen-overlay').style.display = 'none';
         }
