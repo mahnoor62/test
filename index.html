@@ -194,10 +194,10 @@
     const externalUrlFun = () => {
         if (userId) {
             const url = `https://mahnoor62.github.io/test/#id=${userId}`;
-            document.getElementById('fullscreen-overlay').style.display = 'none';
             console.log("Redirecting to URL:", url);
             // window.location.href = url;
-            window.open(url, '_blank'); // Open the link in a new browser tab
+            window.open(url, '_blank');
+            document.getElementById('fullscreen-overlay').style.display = 'none';
         }
     };
     const updateProgress = async (data) => {
@@ -242,7 +242,7 @@
         }
     };
     document.body.appendChild(script);
-    3
+
 </script>
 </body>
 </html>
