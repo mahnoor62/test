@@ -19,13 +19,13 @@
     <div id="unity-warning"></div>
     <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-        <!--        <div id="fullscreen-overlay">-->
-        <!--            <div class="center-content">-->
+        <div id="fullscreen-overlay" style="display:none;">
+            <button id="link" onclick="externalUrlFun()">click here</button>
+        </div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">Gravity glider</div>
     </div>
-    <!--        </div>-->
-    <!--    </div>-->
+
 </div>
 <script>
 
@@ -79,7 +79,7 @@
     // happening inside the engine, and you would instead like to size up
     // the canvas DOM size and WebGL render target sizes yourself.
     // config.matchWebGLToCanvasSize = false;
-    //it will check where the user play game on mobile phn of d
+    //it will check where the user play game on mobile phn or in desktop if in desktop it show the external link button to play game on browser
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
 
@@ -98,6 +98,7 @@
     } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
+        document.getElementById('fullscreen-overlay').style.display = 'block';
 
 
     }
@@ -185,7 +186,10 @@
             console.error(message)
         });
     };
-
+    const externalUrlFun = () => {
+        const url = `https://mahnoor62.github.io/test/#id=${userId}`;
+        window.location.href = url;
+    }
     const updateProgress = async (data) => {
         const json = JSON.parse(data);
         try {

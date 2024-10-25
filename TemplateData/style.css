@@ -99,7 +99,6 @@ body {
 }
 
 #fullscreen-overlay {
-    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -116,7 +115,9 @@ body {
 }
 
 /* Style for the link inside the overlay */
-#fullscreen-link {
+#link {
     color: white;
+    background-color: royalblue;
+    padding: 5px;
     text-decoration: none;
 }
