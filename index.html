@@ -19,13 +19,16 @@
     <div id="unity-warning"></div>
     <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
-        <div id="fullscreen-overlay" style="display:none;">
-            <button id="link" onclick="externalUrlFun()">Play game in browser</button>
-        </div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">Gravity glider</div>
     </div>
 
+</div>
+<div id="fullscreen-overlay" style="display:none;">
+    <div style="text-align: center">
+        <button id="link" onclick="externalUrlFun()">Play Game</button>
+        <p>Please click on this button to play game!</p>
+    </div>
 </div>
 <script>
 
@@ -98,7 +101,14 @@
     } else {
         canvas.style.width = "960px";
         canvas.style.height = "600px";
-        document.getElementById('fullscreen-overlay').style.display = 'block';
+
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+        const tgWebAppData = params.get('tgWebAppData');
+
+        if (tgWebAppData) {
+            document.getElementById('fullscreen-overlay').style.display = 'flex';
+        }
     }
 
     loadingBar.style.display = "block";
@@ -194,9 +204,10 @@
     const externalUrlFun = () => {
         if (userId) {
             const url = `https://mahnoor62.github.io/test/#id=${userId}`;
-            // console.log("Redirecting to URL:", url);
-            window.open(url, '_blank');
-            document.getElementById('fullscreen-overlay').style.display = 'none';
+            const newWindow = window.open(url, '_blank');
+            if (newWindow) {
+                document.getElementById('fullscreen-overlay').style.display = 'none';
+            }
         }
     };
     const updateProgress = async (data) => {
