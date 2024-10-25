@@ -114,8 +114,6 @@
         // Decode the tgWebAppData parameter
         const tgWebAppData = params.get('tgWebAppData');
 
-        console.log("tgWebAppData: ", tgWebAppData)
-
         if (tgWebAppData) {
             // Parse the tgWebAppData string into parameters
             const dataParams = new URLSearchParams(tgWebAppData);
@@ -123,7 +121,9 @@
             // Get the user JSON string from the "user" parameter
             const userJson = dataParams.get('user');
 
-            console.log("userJson: ", userJson);
+            const id = params.get('id');
+
+            console.log("id: ", id);
 
             if (userJson) {
                 // Decode the user JSON string
@@ -132,14 +132,11 @@
                 // Parse the JSON string into an object
                 const userData = JSON.parse(decodedUserJson);
 
-                console.log("userData: ", userData);
-
                 // Extract the id from the user object
                 return userData.id;
             }
         } else {
             const id = params.get('id');
-            console.log("id: ", id)
             if (id) return id;
         }
 
@@ -148,8 +145,6 @@
     }
 
     const userId = extractUserIdFromUrl();
-
-    console.log("userId", userId)
 
     var script = document.createElement("script");
     script.src = loaderUrl;
