@@ -24,8 +24,8 @@ body {
 }
 
 #unity-logo {
-    width: 200px;
-    height: 200px;
+    width: 130px;
+    height: 130px;
     background: url('Icon.png') no-repeat center center;
     background-size: contain;
 }
