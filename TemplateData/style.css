@@ -24,8 +24,8 @@ body {
 }
 
 #unity-logo {
-    width: 130px;
-    height: 130px;
+    width: 200px;
+    height: 200px;
     background: url('Icon.png') no-repeat center center;
     background-size: contain;
 }
@@ -55,7 +55,6 @@ body {
     padding: 10px;
     display: none
 }
-
 #fullscreen-overlay {
     position: fixed;
     top: 50%;
@@ -79,4 +78,3 @@ body {
     border: 2px solid deepskyblue;
     cursor: pointer;
 }
-
