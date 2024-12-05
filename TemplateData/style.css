@@ -63,6 +63,7 @@ body {
     padding: 10px;
     display: none
 }
+
 #fullscreen-overlay {
     position: fixed;
     top: 50%;
