@@ -29,7 +29,7 @@
         <p>Please click on this button to play game!</p>
     </div>
 </div>
-
+<!--<button  id="shareButton" onclick="shareData()">Share</button>-->
 <script>
 
 
@@ -262,8 +262,9 @@
             console.log("error while updating user progress", error);
         }
     };
-    document.body.appendChild(script);
 
+    document.body.appendChild(script);
+    //share data function
     const shareData = async () => {
         console.log("function is calling=>shareData")
         const data = {
@@ -285,7 +286,7 @@
     }
 
 
-    //share data function
+
 
     // const data = {
     //     // title: 'Check this out!',
