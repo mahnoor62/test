@@ -29,7 +29,9 @@
         <p>Please click on this button to play game!</p>
     </div>
 </div>
+
 <script>
+
 
     var container = document.querySelector("#unity-container");
     var canvas = document.querySelector("#unity-canvas");
@@ -261,6 +263,48 @@
         }
     };
     document.body.appendChild(script);
+
+    const shareData = async () => {
+        const data = {
+            title: 'Join me in Gravity Glider, the ultimate adventure where you glide through mesmerizing galaxies, conquer challenging levels, and face epic boss battles!',
+            url: 'https://web.telegram.org/k/#@DailyAidBot',
+        };
+
+        try {
+            if (navigator.share) {
+                await navigator.share(data);
+                console.log('Content shared successfully!');
+            } else {
+                console.log('Web Share API not supported on this browser.');
+            }
+        } catch (error) {
+            console.error('Error sharing content:', error);
+        }
+
+    }
+
+
+    //share data function
+
+    // const data = {
+    //     // title: 'Check this out!',
+    //     title: 'Join me in Gravity Glider, the ultimate adventure where you glide through mesmerizing galaxies, conquer challenging levels, and face epic boss battles!',
+    //     url: 'https://web.telegram.org/k/#@DailyAidBot',
+    // };
+    //
+    // document.getElementById('shareButton').addEventListener('click', async () => {
+    //     try {
+    //         if (navigator.share) {
+    //             await navigator.share(shareData);
+    //             console.log('Content shared successfully!');
+    //         } else {
+    //             console.log('Web Share API not supported on this browser.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error sharing content:', error);
+    //     }
+    // });
+
 
 </script>
 </body>
