@@ -265,8 +265,29 @@
 
     document.body.appendChild(script);
     //share data function
+    // const shareData = async () => {
+    //     console.log("function is calling=>shareData")
+    //     const data = {
+    //         title: 'Join me in Gravity Glider, the ultimate adventure where you glide through mesmerizing galaxies, conquer challenging levels, and face epic boss battles!',
+    //         url: 'https://web.telegram.org/k/#@DailyAidBot',
+    //     };
+    //
+    //     try {
+    //         if (navigator.share) {
+    //             await navigator.share(data);
+    //             console.log('Content shared successfully!');
+    //         } else {
+    //             console.log('Web Share API not supported on this browser.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error sharing content:', error);
+    //     }
+    //
+    // }
+
     const shareData = async () => {
-        console.log("function is calling=>shareData")
+        console.log("function is calling => shareData");
+
         const data = {
             title: 'Join me in Gravity Glider, the ultimate adventure where you glide through mesmerizing galaxies, conquer challenging levels, and face epic boss battles!',
             url: 'https://web.telegram.org/k/#@DailyAidBot',
@@ -274,18 +295,22 @@
 
         try {
             if (navigator.share) {
+                // Web Share API is supported
                 await navigator.share(data);
                 console.log('Content shared successfully!');
             } else {
+                // Fallback if Web Share API is not supported
                 console.log('Web Share API not supported on this browser.');
+                alert('Sharing not supported on this device. The link has been copied to your clipboard for manual sharing.');
+
+                // Copy link to clipboard
+                await navigator.clipboard.writeText(data.url);
+                console.log('Link copied to clipboard.');
             }
         } catch (error) {
             console.error('Error sharing content:', error);
         }
-
-    }
-
-
+    };
 
 
     // const data = {
