@@ -282,9 +282,8 @@
     //     } catch (error) {
     //         console.error('Error sharing content:', error);
     //     }
-    //
-    // }
 
+    // }
     const shareData = async () => {
         console.log("function is calling => shareData");
 
@@ -299,18 +298,54 @@
                 await navigator.share(data);
                 console.log('Content shared successfully!');
             } else {
-                // Fallback if Web Share API is not supported
+                // Fallback for unsupported browsers
                 console.log('Web Share API not supported on this browser.');
-                alert('Sharing not supported on this device. The link has been copied to your clipboard for manual sharing.');
 
-                // Copy link to clipboard
-                await navigator.clipboard.writeText(data.url);
-                console.log('Link copied to clipboard.');
+                // Attempt to copy the link to clipboard
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(`${data.title}\n\n${data.url}`);
+                    alert('Sharing is not supported on this device. The link has been copied to your clipboard for manual sharing.');
+                    console.log('Link copied to clipboard.');
+                } else {
+                    // Final fallback for devices that don't support clipboard API
+                    alert(`Sharing is not supported, and clipboard access is unavailable. Please manually copy the link:\n\n${data.url}`);
+                    console.log('Clipboard API not supported.');
+                }
             }
         } catch (error) {
-            console.error('Error sharing content:', error);
+            console.error('Error sharing content or copying to clipboard:', error);
+
+            // Handle errors gracefully
+            alert(`An error occurred. Please manually copy the following link to share:\n\n${data.url}`);
         }
     };
+
+    // const shareData = async () => {
+    //     console.log("function is calling => shareData");
+    //
+    //     const data = {
+    //         title: 'Join me in Gravity Glider, the ultimate adventure where you glide through mesmerizing galaxies, conquer challenging levels, and face epic boss battles!',
+    //         url: 'https://web.telegram.org/k/#@DailyAidBot',
+    //     };
+    //
+    //     try {
+    //         if (navigator.share) {
+    //             // Web Share API is supported
+    //             await navigator.share(data);
+    //             console.log('Content shared successfully!');
+    //         } else {
+    //             // Fallback if Web Share API is not supported
+    //             console.log('Web Share API not supported on this browser.');
+    //             alert('Sharing not supported on this device. The link has been copied to your clipboard for manual sharing.');
+    //
+    //             // Copy link to clipboard
+    //             await navigator.clipboard.writeText(data.url);
+    //             console.log('Link copied to clipboard.');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error sharing content:', error);
+    //     }
+    // };
 
     // const showNotification = (message) => {
     //     const notification = document.createElement('div');
