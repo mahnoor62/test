@@ -294,31 +294,35 @@
 
         try {
             if (navigator.share) {
-                // Web Share API is supported
                 await navigator.share(data);
                 console.log('Content shared successfully!');
             } else {
-                // Fallback for unsupported browsers
                 console.log('Web Share API not supported on this browser.');
-
-                // Attempt to copy the link to clipboard
                 if (navigator.clipboard && navigator.clipboard.writeText) {
                     await navigator.clipboard.writeText(`${data.title}\n\n${data.url}`);
-                    alert('Sharing is not supported on this device. The link has been copied to your clipboard for manual sharing.');
-                    console.log('Link copied to clipboard.');
+                    alert('The link has been copied to your clipboard for manual sharing.');
                 } else {
-                    // Final fallback for devices that don't support clipboard API
-                    alert(`Sharing is not supported, and clipboard access is unavailable. Please manually copy the link:\n\n${data.url}`);
-                    console.log('Clipboard API not supported.');
+                    const textToCopy = `${data.title}\n\n${data.url}`;
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    textArea.style.position = 'fixed'; // Avoid scrolling to the bottom
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        alert('The link has been copied to your clipboard for manual sharing.');
+                    } catch (error) {
+                        alert(`Unable to copy the link automatically. Please manually copy the following:\n\n${data.url}`);
+                    }
+                    document.body.removeChild(textArea);
                 }
             }
         } catch (error) {
             console.error('Error sharing content or copying to clipboard:', error);
-
-            // Handle errors gracefully
-            alert(`An error occurred. Please manually copy the following link to share:\n\n${data.url}`);
         }
     };
+
 
     // const shareData = async () => {
     //     console.log("function is calling => shareData");
