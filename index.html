@@ -155,11 +155,10 @@
             document.getElementById('unity-canvas').style.background = "url('./TemplateData/portrate.png') no-repeat center center";
             document.getElementById('unity-loading-bar').style.display = "none";
 
+        }else if(isLandscape){
+            console.log("Game is in landscape mode");
+            document.getElementById('unity-canvas').style.background =  "url('./TemplateData/icon.png') no-repeat center center";
         }
-        // else if(isLandscape){
-        //     console.log("Game is in landscape mode");
-        //     document.getElementById('unity-canvas').style.background =  "url('./TemplateData/icon.png') no-repeat center center";
-        // }
 
     }
 
