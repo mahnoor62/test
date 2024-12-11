@@ -72,25 +72,6 @@
         productVersion: "1.0",
         showBanner: unityShowBanner,
     };
-    function checkOrientation() {
-        const isPortrait = window.innerHeight > window.innerWidth;
-        // const isLandscape = window.innerWidth > window.innerHeight;
-
-        if (isPortrait) {
-            console.log("Game is in portrait mode");
-            document.getElementById('unity-canvas').style.background = "url('./TemplateData/portrate.png') no-repeat center center";
-            document.getElementById('unity-loading-bar').style.display = "none";
-
-        } else {
-            console.log("Game is in landscape mode");
-            document.getElementById('unity-canvas').style.background = "";
-        }
-
-    }
-
-    checkOrientation();
-    window.addEventListener("resize", checkOrientation);
-    window.addEventListener("orientationchange", checkOrientation);
 
     //it will check where the user play game on mobile phn or in desktop if in desktop it show the external link button to play game on browser
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -164,6 +145,25 @@
         return null;
     }
 
+    function checkOrientation() {
+        const isPortrait = window.innerHeight > window.innerWidth;
+        // const isLandscape = window.innerWidth > window.innerHeight;
+
+        if (isPortrait) {
+            console.log("Game is in portrait mode");
+            document.getElementById('unity-canvas').style.background = "url('./TemplateData/portrate.png') no-repeat center center";
+            document.getElementById('unity-loading-bar').style.display = "none";
+
+        } else {
+            console.log("Game is in landscape mode");
+            document.getElementById('unity-canvas').style.background = "";
+        }
+
+    }
+
+    checkOrientation();
+    window.addEventListener("resize", checkOrientation);
+    window.addEventListener("orientationchange", checkOrientation);
 
 
 
