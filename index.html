@@ -146,26 +146,26 @@
         return null;
     }
 
-    function checkOrientation() {
-        const isPortrait = window.innerHeight > window.innerWidth;
-        // const isLandscape = window.innerWidth > window.innerHeight;
-
-        if (isPortrait) {
-            console.log("Game is in portrait mode");
-            document.getElementById('unity-canvas').style.background = "url('./TemplateData/portrate.png') no-repeat center center";
-            document.getElementById('unity-loading-bar').style.display = "none";
-
-        } else {
-            console.log("Game is in landscape mode");
-            document.getElementById('unity-canvas').style.background = "";
-            // document.getElementById('unity-canvas').style.backgroundSize = "cover";
-        }
-
-    }
-
-    checkOrientation();
-    window.addEventListener("resize", checkOrientation);
-    window.addEventListener("orientationchange", checkOrientation);
+    // function checkOrientation() {
+    //     const isPortrait = window.innerHeight > window.innerWidth;
+    //     // const isLandscape = window.innerWidth > window.innerHeight;
+    //
+    //     if (isPortrait) {
+    //         console.log("Game is in portrait mode");
+    //         document.getElementById('unity-canvas').style.background = "url('./TemplateData/portrate.png') no-repeat center center";
+    //         document.getElementById('unity-loading-bar').style.display = "none";
+    //
+    //     } else {
+    //         console.log("Game is in landscape mode");
+    //         document.getElementById('unity-canvas').style.background = "";
+    //         // document.getElementById('unity-canvas').style.backgroundSize = "cover";
+    //     }
+    //
+    // }
+    //
+    // checkOrientation();
+    // window.addEventListener("resize", checkOrientation);
+    // window.addEventListener("orientationchange", checkOrientation);
 
 
     const userId = extractUserIdFromUrl();
