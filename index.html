@@ -146,7 +146,7 @@
         return null;
     }
 
-    const checkOrientation =()=> {
+    const checkOrientation = () => {
         const isPortrait = window.innerHeight > window.innerWidth;
         const isLandscape = window.innerWidth > window.innerHeight;
 
@@ -155,7 +155,7 @@
             document.getElementById('unity-canvas').style.background = "url('./TemplateData/portrate.png') no-repeat center center";
             document.getElementById('unity-loading-bar').style.display = "none";
 
-        } else if(isLandscape){
+        } else {
             console.log("Game is in landscape mode");
             document.getElementById('unity-canvas').style.background = "";
             // document.getElementById('unity-loading-bar').style.display = "block";
@@ -166,7 +166,6 @@
     checkOrientation();
     window.addEventListener("resize", checkOrientation);
     window.addEventListener("orientationchange", checkOrientation);
-
 
 
     const userId = extractUserIdFromUrl();
