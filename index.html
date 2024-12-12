@@ -30,6 +30,8 @@
         <p>Please click on this button to play game!</p>
     </div>
 </div>
+<div id="rotateScreen"
+     style="display:none;position: absolute;height:100%;width:100%;background-size:cover;background-image: url('./TemplateData/portrate.png'); background-repeat: no-repeat;background-position: center"></div>
 <!--<button  id="shareButton" onclick="shareData()">Share</button>-->
 <script>
 
@@ -146,28 +148,29 @@
         return null;
     }
 
+    var instanceObj = null;
+
     const checkOrientation = () => {
-        const isPortrait = window.innerHeight > window.innerWidth;
-        const isLandscape = window.innerWidth > window.innerHeight;
+
+        const isPortrait = window.matchMedia("(orientation: portrait)").matches;
 
         if (isPortrait) {
-            console.log("Game is in portrait mode");
-            document.getElementById('unity-canvas').style.background = "url('./TemplateData/portrate.png') no-repeat center center";
-            document.getElementById('unity-canvas').style.zIndex = '1';
-            document.getElementById('unity-loading-bar').style.zIndex = '0';
-
+            loadingBar.style.display = 'none';
+            document.getElementById('rotateScreen').style.display = 'block';
         } else {
-            console.log("Game is in landscape mode");
-            document.getElementById('unity-canvas').style.background = "";
-            // document.getElementById('unity-canvas').style.zIndex = '0';
-            // document.getElementById('unity-loading-bar').style.zIndex = '1';
+            if (instanceObj) {
+                loadingBar.style.display = 'none';
+            } else {
+                loadingBar.style.display = 'block';
+            }
+            document.getElementById('rotateScreen').style.display = 'none';
         }
 
     }
 
     checkOrientation();
+
     window.addEventListener("resize", checkOrientation);
-    window.addEventListener("orientationchange", checkOrientation);
 
     const userId = extractUserIdFromUrl();
 
@@ -177,6 +180,7 @@
         createUnityInstance(canvas, config, (progress) => {
             progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
+            instanceObj = unityInstance;
             loadingBar.style.display = "none";
             fullscreenButton.onclick = () => {
                 unityInstance.SetFullscreen(1);
