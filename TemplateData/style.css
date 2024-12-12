@@ -37,7 +37,7 @@ body {
 #unity-progress-bar-empty {
     margin-left: auto;
     margin-right: auto;
-    width: 250px;
+    width: 280px;
     height: 18px;
     margin-top: 10px;
     background: url('progress-bar-empty-dark.png') no-repeat center
