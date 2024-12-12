@@ -159,7 +159,8 @@
         } else {
             console.log("Game is in landscape mode");
             document.getElementById('unity-canvas').style.background = "";
-            // document.getElementById('unity-loading-bar').style.display = "block";
+            document.getElementById('unity-canvas').style.zIndex = '0';
+            document.getElementById('unity-loading-bar').style.zIndex = '1';
         }
 
     }
