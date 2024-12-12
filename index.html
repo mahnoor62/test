@@ -24,8 +24,7 @@
     </div>
 </div>
 <div id="fullscreen-overlay"
-     style="display:none;"
->
+     style="display:none;">
     <div style="text-align: center">
         <button id="link" onclick="externalUrlFun()">Play Game</button>
         <p>Please click on this button to play game!</p>
@@ -159,6 +158,7 @@
         } else {
             console.log("Game is in landscape mode");
             document.getElementById('unity-canvas').style.background = "";
+            document.getElementById('unity-loading-bar').style.display = "block";
         }
 
     }
