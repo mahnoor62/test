@@ -32,7 +32,7 @@
 </div>
 <div id="rotateScreen"
      style="display:none;position: absolute;height:100%;width:100%;background-size:cover;background-image: url('./TemplateData/portrate.png'); background-repeat: no-repeat;background-position: center"></div>
-<!--<button  id="shareButton" onclick="shareData()">Share</button>-->
+
 <script>
 
 
@@ -88,8 +88,6 @@
         canvas.className = "unity-mobile";
 
     } else {
-        // canvas.style.width = "960px";
-        // canvas.style.height = "600px";
 
         canvas.style.width = "100%";
         canvas.style.height = "100%";
@@ -165,12 +163,12 @@
             }
             document.getElementById('rotateScreen').style.display = 'none';
         }
-
     }
 
     checkOrientation();
 
     window.addEventListener("resize", checkOrientation);
+
 
     const userId = extractUserIdFromUrl();
 
@@ -226,6 +224,7 @@
             window.open(url, '_blank');
         }
     };
+
     const updateProgress = async (data) => {
         const json = JSON.parse(data);
         try {
@@ -279,28 +278,7 @@
 
     document.body.appendChild(script);
     //share data function
-    // const shareData = async () => {
-    //     console.log("function is calling=>shareData")
-    //     const data = {
-    //         title: 'Join me in Gravity Glider, the ultimate adventure where you glide through mesmerizing galaxies, conquer challenging levels, and face epic boss battles!',
-    //         url: 'https://web.telegram.org/k/#@DailyAidBot',
-    //     };
-    //
-    //     try {
-    //         if (navigator.share) {
-    //             await navigator.share(data);
-    //             console.log('Content shared successfully!');
-    //         } else {
-    //             console.log('Web Share API not supported on this browser.');
-    //         }
-    //     } catch (error) {
-    //         console.error('Error sharing content:', error);
-    //     }
-
-    // }
     const shareData = async () => {
-        console.log("function is calling => shareData");
-
         const data = {
             title: 'Join me in Gravity Glider, the ultimate adventure where you glide through mesmerizing galaxies, conquer challenging levels, and face epic boss battles!',
             url: 'https://web.telegram.org/k/#@DailyAidBot',
