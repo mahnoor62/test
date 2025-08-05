@@ -192,9 +192,7 @@
             // };
 
             if (userId) {
-                // unityInstance.SendMessage('JavascriptHandler', 'GetWebGLExternalLink', `https://mahnoor62.github.io/test/#id=${userId}`);
-
-                const apiUrl = `https://gravityglider.tecshield.net/api/user/login/${userId}`;
+                const apiUrl = `https://api.gravityglider.com/api/user/login/${userId}`;
                 fetch(apiUrl, {
                     method: 'GET',
                     headers: {
@@ -220,7 +218,7 @@
 
     const externalUrlFun = () => {
         if (userId) {
-            const url = `https://mahnoor62.github.io/test/#id=${userId}`;
+            const url = `https://game.gravityglider.com/#id=${userId}`;
             window.open(url, '_blank');
         }
     };
@@ -228,7 +226,7 @@
     const updateProgress = async (data) => {
         const json = JSON.parse(data);
         try {
-            const apiUrl = 'https://gravityglider.tecshield.net/api/user/update-progress';
+            const apiUrl = 'https://api.gravityglider.com/api/user/update-progress';
             const bodyData = {
                 userId: json.userId,
                 score: json.score,
